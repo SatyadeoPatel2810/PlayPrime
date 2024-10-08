@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Failed</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #000, #004080); 
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h1 {
+            color: #e60000; 
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #ffcc00; 
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #00ace6; 
+            margin-bottom: 30px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #00ace6; 
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #005c99; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Registration Failed. Please Try Again.</h1>
+    <h2>The account you are trying to register has already been registered.</h2>
+    <h3>Register with a different email address !</h3>
+
+    <form action="map-register">
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>

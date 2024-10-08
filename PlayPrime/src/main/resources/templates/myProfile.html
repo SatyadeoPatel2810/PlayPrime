@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Registration Form with Country Code</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #000, #004080);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        form {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 600px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #00ace6;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #b3b3b3;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        textarea {
+            height: 80px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #00ace6;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #005c99;
+        }
+
+        .gender-group {
+            margin-bottom: 20px;
+            color: #b3b3b3;
+        }
+
+        .gender-group label {
+            margin-right: 20px;
+            color: white;
+        }
+
+        .phone-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .phone-group select {
+            width: 30%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            background-color: #333;
+            color: white;
+            margin-right: 5px;
+        }
+
+        .phone-group input {
+            width: 70%;
+            border-radius: 0 5px 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <form action="update" method="post">
+        <h2>Update your Profile !</h2>
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+
+        <div class="phone-group">
+            <label for="phone">Phone Number:</label>
+            <select name="country_code" id="country_code" required>
+                <option value="+1">+1 (USA)</option>
+                <option value="+44">+44 (UK)</option>
+                <option value="+91">+91 (India)</option>
+                <option value="+61">+61 (Australia)</option>
+                <option value="+81">+81 (Japan)</option>
+                <!-- You can add more country codes here -->
+            </select>
+            <input type="number" name="phone" id="phone" placeholder="Enter phone number" required>
+        </div>
+
+        <div class="gender-group">
+            <label>Gender:</label>
+            <label><input type="radio" name="gender" value="male" required> Male</label>
+            <label><input type="radio" name="gender" value="female"> Female</label>
+            <label><input type="radio" name="gender" value="others"> Others</label>
+        </div>
+
+        <label for="address">Address:</label>
+        <textarea name="address" id="address" required></textarea>
+
+        <input type="submit" value="UPDATE">
+    </form>
+</body>
+</html>

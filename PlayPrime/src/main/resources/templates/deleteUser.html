@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page for deletion</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #000, #004080); 
+            background-size: cover; 
+            font-family: Arial, Helvetica, sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #000; 
+            margin-bottom: 20px;
+        }
+        p{
+        	 text-align: center;
+        }
+        form {
+            background-color: rgba(0, 0, 0, 0.7); 
+            padding: 20px;
+            border-radius: 10px;
+            margin: 0 auto; 
+            width: 300px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #fff; 
+        }
+        input[type="text"] {
+            width: 100%; 
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            background-color: #333; 
+            color: #fff; 
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+		<p th:text="${deletesuccess}" style="color:green"></p>
+		<p th:text="${deletefailure}" style="color:red"></p>
+    <h2>Delete User by ID</h2>
+    <form action="deleteUser"> 
+        <label for="userId">Enter User ID:</label>
+        <input type="text" id="UserId" name="id" required> 
+        <input type="submit" value="Delete User">
+    </form>
+    <br><br>
+    <a href="AdminHome" style="color:Red;">Back to admin Page !</a>
+</body>
+</html>

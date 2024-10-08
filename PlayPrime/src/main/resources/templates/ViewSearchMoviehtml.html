@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Search Movies</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(to right, #000, #004080); 
+        }
+        h2 {
+            text-align: center;
+            color: white; 
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #333; 
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #004080; 
+            color: white; 
+        }
+        tr:nth-child(even) {
+            background-color: #e6f7ff; 
+        }
+        tr:hover {
+            background-color: #cce5ff; 
+        }
+        a {
+            color: #004080;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>All Movies</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Link</th>
+                <th>Genre</th>
+                <th>Cast</th>
+                <th>Director</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="movie : ${movie}">
+                <td th:text="${movie.id}"></td>
+                <td th:text="${movie.name}"></td>
+                <td th:utext="${movie.link}"></td>
+                <td th:text="${movie.genre}"></td>
+                <td th:text="${movie.cast}"></td>
+                <td th:text="${movie.director}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

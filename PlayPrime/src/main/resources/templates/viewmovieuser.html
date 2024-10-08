@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>All Movies</title>
+    <style>
+        body {
+            background-color: #141414;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h2 {
+            padding: 30px;
+            text-align: center;
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+       
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .movie-item {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+            border-radius: 8px;
+        }
+
+       
+        .movie-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+            z-index: 10;
+        }
+
+        .movie-item iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .movie-item h3 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 0;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            font-size: 1.2em;
+            color: #fff;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        
+        .movie-item:hover h3 {
+            opacity: 1;
+        }
+
+        /* Responsive behavior */
+        @media (max-width: 768px) {
+            .movie-item iframe {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .movie-item iframe {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>All Movies</h2>
+    
+    <div class="movie-grid">
+        <div th:each="movie : ${movie}" class="movie-item">
+            <td th:utext="${movie.link}"></td>
+            <h3 th:text="${movie.name}">Movie name</h3>
+        </div>
+    </div>     
+</body>
+</html>

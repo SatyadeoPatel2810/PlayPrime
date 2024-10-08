@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #000, #004080); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            margin: 0; 
+        }
+        .payment-container {
+            background: #B0C4DE; 
+            padding: 20px;
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+            text-align: center; 
+        }
+        .buy-button {
+            background-color: #4682B4; 
+            color: white;
+            border: none;
+            padding: 10px 20px; 
+            font-size: 16px;
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: background-color 0.3s;
+        }
+        .buy-button:hover {
+            background-color: #218838; 
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <h2>Complete Your Payment</h2>
+        <form id="payment-form">
+            <button type="submit" class="buy-button">PAY</button>
+        </form>
+    </div>
+
+    <script>
+    $(document).ready(function() {
+        $(".buy-button").click(function(e) {
+            e.preventDefault(); // Prevent default form submission
+            createOrder(); // Call createOrder function
+        });
+    });
+
+    function createOrder() {
+        $.post("/createOrder")
+            .done(function(order) {
+                order = JSON.parse(order);
+                var options = {
+                    "key": "rzp_test_A9p6rhUUEHx94W", // Your Razorpay API Key
+                    "amount": order.amount_due.toString(), // Amount in paise
+                    "currency": "INR", // Currency type
+                    "name": "Play Prime", // Company Name
+                    "description": "Test Transaction", // Transaction description
+                    "order_id": order.id, // Unique Order ID
+                    "handler": function (response) {
+                        verifyPayment(response.razorpay_order_id, response.razorpay_payment_id, response.razorpay_signature);
+                    },
+                    "prefill": {
+                        "name": "Your Name", // Prefill name
+                        "email": "test@example.com", // Prefill email
+                        "contact": "9999999999" // Prefill contact
+                    },
+                    "notes": {
+                        "address": "Your Address" // Additional notes
+                    },
+                    "theme": {
+                        "color": "#F37254" // Theme color
+                    }
+                };
+                var rzp1 = new Razorpay(options);
+                rzp1.open(); // Open Razorpay payment modal
+            })
+            .fail(function(error) {
+                console.error("Error:", error); // Log error
+            });
+    }
+
+    function verifyPayment(orderId, paymentId, signature) {
+         $.post("/verify", { orderId: orderId, paymentId: paymentId, signature: signature })
+             .done(function(isValid) {
+                 if (isValid) {
+                     alert("Payment successful");
+                     window.location.href = 'payment-success'; // Redirect on success
+                 } else {
+                     alert("Payment failed");
+                     window.location.href = 'payment-failure'; // Redirect on failure
+                 }
+             })
+             .fail(function(error) {
+                 console.error("Error:", error); // Log error
+             });
+    }
+    </script>
+</body>
+</html>

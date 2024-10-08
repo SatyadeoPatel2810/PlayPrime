@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Users</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(to right, #000, #004080); 
+        }
+
+        h2 {
+            text-align: center;
+            color: white; 
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd; 
+        }
+
+        th {
+            background-color: #000; 
+            color: #00ace6; 
+        }
+
+        td {
+            background-color: #1a1a1a; 
+            color: white; 
+        }
+
+        
+        tr:hover {
+            background-color: #333; 
+        }
+    </style>
+</head>
+<body>
+
+    <h2>All Users</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Gender</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${user}">
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.phone}"></td>
+                <td th:text="${user.gender}"></td>
+                <td th:text="${user.address}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <br> <br>
+    <a href="AdminHome" style="color:Red;">Back to admin Page !</a>
+
+</body>
+</html>

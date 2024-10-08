@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Added Successfully</title>
+    <style>
+        body {
+           background: linear-gradient(to right, #000, #004080); 
+            background-size: cover; 
+            font-family: Arial, Helvetica, sans-serif;
+            color: #fff; 
+            text-align: center; 
+            padding: 20px;
+            margin: 0;
+        }
+        h1 {
+            margin-top: 50px; 
+            color: #00ace6; 
+        }
+        form {
+            margin-top: 20px; 
+            display: inline-block; 
+            background-color: rgba(0, 0, 0, 0.7); 
+            padding: 20px;
+            border-radius: 10px; 
+        }
+        input[type="submit"] {
+            background-color: #007bff; 
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s; 
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Movie Added Successfully!</h1>
+    <p>Would you like to add another movie?</p>
+    <form action="map-addmovie">
+        <input type="submit" value="Add Movie">
+    </form>
+    <br>
+   <div style="text-align: center;">
+    <a href="AdminHome" style="color: red; text-decoration: none;">Back to Admin Page!</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>All Movies</h2>
+	<table border="1">
+		<thead>
+			<tr>
+				<td>name</td>
+				<td>email</td>
+				<td>phone</td>
+				<td>gender</td>
+				<td>address</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="user : ${user}">
+				<td th:text="${user.name}"></td>
+				<td th:text="${user.email}"></td>
+				<td th:text="${user.phone}"></td>
+				<td th:text="${user.gender}"></td>
+				<td th:text="${user.address}"></td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>
